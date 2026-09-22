@@ -1,0 +1,1 @@
+Place Zebra-provided API3_READER-release.aar, API3_CMN-release.aar, API3_INTERFACE-release.aar, API3_ASCII-release.aar and API3_TRANSPORT-release.aar here. Do not commit proprietary binaries unless permitted by your Zebra license.

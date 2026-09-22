@@ -1,0 +1,16 @@
+plugins { id 'com.android.application' }
+
+android { namespace 'com.rfidsystem.bridge'; compileSdk 35
+ defaultConfig { applicationId 'com.rfidsystem.bridge'; minSdk 26; targetSdk 35; versionCode 1; versionName '1.0.0' }
+}
+
+repositories { flatDir { dirs 'libs' } }
+
+dependencies {
+ implementation(files('libs/API3_READER-release.aar'))
+ implementation(files('libs/API3_CMN-release.aar'))
+ implementation(files('libs/API3_INTERFACE-release.aar'))
+ implementation(files('libs/API3_ASCII-release.aar'))
+ implementation(files('libs/API3_TRANSPORT-release.aar'))
+ implementation('com.squareup.okhttp3:okhttp:4.12.0')
+}

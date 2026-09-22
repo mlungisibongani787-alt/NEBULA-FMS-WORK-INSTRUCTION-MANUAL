@@ -1,0 +1,1 @@
+export const I={home:'⌂',receiving:'⇩',dispatch:'⇧',count:'▦',inventory:'▤',locate:'⌖',audit:'✓',investigate:'!',reports:'▥',data:'▦',devices:'◉',settings:'⚙',search:'⌕',bell:'♧',target:'◎',signal:'◉',barcode:'▥',upload:'⇧',play:'▶',stop:'■',refresh:'↻',check:'✓',warning:'!',plus:'+',download:'⇩'};

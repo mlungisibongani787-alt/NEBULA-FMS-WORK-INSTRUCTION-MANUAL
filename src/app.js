@@ -1,0 +1,7 @@
+import './styles.css';import {register,startRouter,go} from './core/router.js';import {shell,bindLayout} from './components/layout.js';import {store} from './core/store.js';import {onBridge} from './core/bridge.js';
+window.RFID={shell,bindGlobal:bindLayout};
+const pages={dashboard:'./pages/dashboard/index.js',receiving:'./pages/receiving/index.js',dispatch:'./pages/dispatch/index.js','cycle-count':'./pages/cycle-count/index.js',inventory:'./pages/inventory/index.js',locate:'./pages/locate/index.js',audit:'./pages/audit/index.js',investigations:'./pages/investigations/index.js',reports:'./pages/reports/index.js','master-data':'./pages/master-data/index.js',devices:'./pages/devices/index.js',settings:'./pages/settings/index.js'};
+Object.entries(pages).forEach(([r,p])=>register(r,()=>import(p)));
+window.addEventListener('rfid-message',e=>{const m=e.detail;if(m.type==='readers'){store.set({devices:{bridge:'online',readers:m.readers||[]}})}if(m.type==='status'){store.set({devices:{...store.get().devices,bridge:m.state}})}if(m.type==='tag'){const t=m.tag;store.upsertInventory([{epc:t.epc,sku:t.sku||'',location:t.location||'',status:'SEEN',rssi:t.rssi,reader:m.reader||'',lastSeen:new Date().toISOString(),reads:t.reads||1}]);store.addEvent('RFID_READ',`Tag ${t.epc} read`,{epc:t.epc,reader:m.reader||''})}});
+onBridge(s=>{document.querySelector('#header-bridge')?.classList.toggle('online',s.state==='online')});
+startRouter();
